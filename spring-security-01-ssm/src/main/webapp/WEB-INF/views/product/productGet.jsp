@@ -7,5 +7,6 @@
 </head>
 <body>
 <h2>商品查询页面</h2>
+<a href="/index">回到首页</a>
 </body>
 </html>

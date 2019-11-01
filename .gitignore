@@ -1,0 +1,7 @@
+#ignore path
+/out/
+/target/
+/build/
+.idea/
+*.iml
+

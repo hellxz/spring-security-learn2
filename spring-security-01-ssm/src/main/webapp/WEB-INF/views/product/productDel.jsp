@@ -7,5 +7,6 @@
 </head>
 <body>
 <h2>商品删除页面</h2>
+<a href="/index">回到首页</a>
 </body>
 </html>

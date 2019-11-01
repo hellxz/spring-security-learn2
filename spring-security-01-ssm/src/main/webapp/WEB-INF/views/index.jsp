@@ -6,9 +6,9 @@
 </head>
 <body>
 <h2>以下是本网站的功能</h2>
-<a href="${pageContext.request.contextPath}/product/add">添加商品</a><br/>
-<a href="${pageContext.request.contextPath}/product/del">删除商品</a><br/>
-<a href="${pageContext.request.contextPath}/product/mod">修改商品</a><br/>
-<a href="${pageContext.request.contextPath}/product/get">查找商品</a>
+<a href="/product/add">添加商品</a><br/>
+<a href="/product/del">删除商品</a><br/>
+<a href="/product/mod">修改商品</a><br/>
+<a href="/product/get">查找商品</a>
 </body>
 </html>
