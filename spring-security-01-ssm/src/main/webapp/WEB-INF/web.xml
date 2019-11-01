@@ -29,7 +29,7 @@
 
   <!--启动Spring mvc-->
   <servlet>
-    <servlet-name>SpringSecuritySSMDemo</servlet-name>
+    <servlet-name>DispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
@@ -39,8 +39,10 @@
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>SpringSecuritySSMDemo</servlet-name>
+    <servlet-name>DispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+
 
 </web-app>
