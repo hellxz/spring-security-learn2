@@ -6,11 +6,39 @@
     http://www.springframework.org/schema/security/spring-security-4.2.xsd
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--
+        security:http 配置Spring过滤器调用链
+        1）需要拦截哪些资源
+        2）需要哪些角色权限
+        3）定义认证方式：HttpBasic FormLogin(常用)
+        4）定义登录页面、请求地址、错误处理方式等
+
+    -->
     <security:http>
-        <security:http-basic/>
+        <!--
+            pattern: 被拦截的资源
+            access: 拦截方式
+                    isAuthenticated: 需要登录
+
+         -->
+        <security:intercept-url pattern="/index" access="hasRole('ROLE_USER')"></security:intercept-url>
+        <security:intercept-url pattern="/product/add" access="isAuthenticated()"></security:intercept-url>
+
+        <!--使用HttpBasic进行授权 （弹出一个SpringSecurity自带的提示窗或登录页）-->
+<!--        <security:http-basic/>-->
+        <!--使用表单登录-->
+        <security:form-login/>
     </security:http>
 
+    <!--
+        security:authentication-manager 授权管理器
+        1）认证信息提供方式（数据库或写死用户名密码权限等方式）
+    -->
     <security:authentication-manager>
-
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="hellxz" password="123" authorities="ROLE_USER"/>
+            </security:user-service>
+        </security:authentication-provider>
     </security:authentication-manager>
 </beans>
