@@ -49,7 +49,10 @@
         -->
         <security:form-login login-page="/user/loginPage" login-processing-url="/user/login" authentication-success-forward-url="/index"/>
 
-        <!--权限不足跳转自定义处理页-->
+        <!--
+            权限不足跳转自定义处理页
+                ps: 此处没有权限访问的时候报了405错误，结果网上说这很正常……所以这个跳转是失败了
+        -->
         <security:access-denied-handler error-page="/user/access-denied"/>
 
 
