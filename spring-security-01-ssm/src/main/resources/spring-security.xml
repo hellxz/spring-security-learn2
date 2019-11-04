@@ -18,11 +18,14 @@
         <!--
             pattern: 被拦截的资源
             access: 拦截方式
-                    isAuthenticated: 需要登录
-
+                    isAnonymous(): 只允许匿名访问，登录过的用户无法访问，提示403
+                    permitAll(): 允许所有人访问
+                    isAuthenticated(): 需要登录
+                    isFullyAuthenticated() 需要登录才能访问
+                    hasRole('角色名')： 登录且必须拥有某些角色才能访问资源
          -->
-        <security:intercept-url pattern="/index" access="hasRole('ROLE_USER')"></security:intercept-url>
-        <security:intercept-url pattern="/product/add" access="isAuthenticated()"></security:intercept-url>
+        <security:intercept-url pattern="/index" access="permitAll()"/>
+        <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
 
         <!--使用HttpBasic进行授权 （弹出一个SpringSecurity自带的提示窗或登录页）-->
 <!--        <security:http-basic/>-->
