@@ -25,12 +25,24 @@
                     hasRole('角色名')： 登录且必须拥有某些角色才能访问资源
          -->
         <security:intercept-url pattern="/index" access="permitAll()"/>
+        <security:intercept-url pattern="/user/loginPage" access="permitAll()"/>
         <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
 
         <!--使用HttpBasic进行授权 （弹出一个SpringSecurity自带的提示窗或登录页）-->
 <!--        <security:http-basic/>-->
         <!--使用表单登录-->
-        <security:form-login/>
+<!--        <security:form-login/>-->
+        <!--
+        自定义登录页面与自定义登录处理页面
+            login-page：自定义登录页
+            login-processing-url:自定义登录处理页面
+        -->
+        <security:form-login login-page="/user/loginPage"/>
+
+        <!--注意：如果自定义登录处理的页面未放开权限，那么会导致403跳转次数过多的错误！-->
+
+        <!--关闭跨域拦截-->
+        <security:csrf disabled="true"/>
     </security:http>
 
     <!--
