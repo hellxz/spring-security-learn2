@@ -18,4 +18,9 @@ public class AuthenticationController {
     public String login(){
         return "login";
     }
+
+    @RequestMapping(value = "/user/access-denied", method = RequestMethod.POST)
+    public String accessDeniedPage(){
+        return "access-denied";
+    }
 }

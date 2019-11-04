@@ -19,7 +19,7 @@ public class ProductController {
         return "product/productDel";
     }
 
-    @RequestMapping(value = "product/mod")
+    @RequestMapping("product/mod")
     public String modProduct(){
         return "product/productMod";
     }
@@ -29,8 +29,4 @@ public class ProductController {
         return "product/productGet";
     }
 
-    @RequestMapping("/index")
-    public String goIndex(){
-        return "index";
-    }
 }
