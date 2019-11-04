@@ -7,7 +7,7 @@
 Those braches is the lesion of class.
 
 ## Before Using Spring Security
-![](./spring-security-01-ssm/pictures/未使用安全框架时流程.jpg)
+![](./pictures/未使用安全框架时流程.jpg)
 ## Spring Security Executing Processes
-![](./spring-security-01-ssm/pictures/SpringSecurityProcedure.png)
+![](./pictures/SpringSecurityProcedure.png)
 
