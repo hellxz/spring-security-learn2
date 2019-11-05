@@ -31,7 +31,7 @@
         <security:intercept-url pattern="/product/del" access="hasRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/product/mod" access="hasRole('ROLE_ADMIN')"/>
         <!--防止跨域请求失败-->
-        <security:intercept-url method="OPTIONS" access="permitAll()"/>
+        <security:intercept-url pattern="/**" method="OPTIONS" access="permitAll()"/>
         <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
 
         <!--使用HttpBasic进行授权 （弹出一个SpringSecurity自带的提示窗或登录页）-->
@@ -65,12 +65,14 @@
         1）认证信息提供方式（数据库或写死用户名密码权限等方式）
     -->
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
+        <security:authentication-provider user-service-ref="myUserDetailsService"/>
+<!--        <security:authentication-provider>-->
+<!--            <security:user-service>-->
                 <!--固定的用户、密码、角色-->
-                <security:user name="hellxz" password="123" authorities="ROLE_USER"/>
-                <security:user name="jane" password="456" authorities="ROLE_ADMIN"/>
-            </security:user-service>
-        </security:authentication-provider>
+<!--                <security:user name="hellxz" password="123" authorities="ROLE_USER"/>-->
+<!--                <security:user name="jane" password="456" authorities="ROLE_ADMIN"/>-->
+<!--            </security:user-service>-->
+<!--        </security:authentication-provider>-->
     </security:authentication-manager>
+    <bean id="myUserDetailsService" class="com.github.hellxz.security.security.MyUserDetailsService"/>
 </beans>
