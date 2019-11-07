@@ -47,7 +47,7 @@
                 authentication-failure-forward-url：登录失败跳转页面
                 注意：如果自定义登录处理的页面未放开权限，那么会导致403跳转次数过多的错误！
         -->
-        <security:form-login login-page="/user/loginPage" login-processing-url="/user/login" authentication-success-forward-url="/index"/>
+        <security:form-login login-page="/user/loginPage" login-processing-url="/user/login" authentication-success-forward-url="/index" authentication-success-handler-ref="authSuccessHandler" authentication-failure-handler-ref="authFailureHandler"/>
 
         <!--
             权限不足跳转自定义处理页
@@ -74,5 +74,10 @@
 <!--            </security:user-service>-->
 <!--        </security:authentication-provider>-->
     </security:authentication-manager>
+    <!--  自定义用户信息定义服务  -->
     <bean id="myUserDetailsService" class="com.github.hellxz.security.security.MyUserDetailsService"/>
+    <!-- 登录成功处理逻辑 -->
+    <bean id="authSuccessHandler" class="com.github.hellxz.security.security.AuthSuccessHandler"/>
+
+    <bean id="authFailureHandler" class="com.github.hellxz.security.security.AuthFailureHandler"/>
 </beans>
