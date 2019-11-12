@@ -4,21 +4,35 @@
 <html lang="en">
 <head>
 <title>登录页面</title>
-<style type="text/css">
-.h5{
-   color: red;
-}
-</style>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 </head>
 <body>
 <h3>登录页面</h3>
-<c:if test="${not empty param.error}">
+<div id="tipsDiv" style="display:none;">
 <h5 style="color: red;">用户名或密码输入不正确，请检查后重试</h5>
-</c:if>
-<form action="/user/login" method="post">
+</div>
+<form method="post" id="loginForm">
 用户名：<input type="text" name="username"/><br/>
 密码：<input type="password" name="password"/><br/>
-<input type="submit" value="提交">
+<input type="button" value="登录" id="loginBtn">
 </form>
+<script>
+    $(function(){
+        $("#loginBtn").click(function(){
+            $.post("${pageContext.request.contextPath}/user/login",
+                $("#loginForm").serialize(),
+                function(data){
+                    if(data.success){
+                        window.location.href="${pageContext.request.contextPath}/index"
+                    }
+                    else{
+                        //显示提示框
+                        $("#tipsDiv").show();
+                    }
+                },"json"
+            )
+        });
+    });
+</script>
 </body>
 </html>

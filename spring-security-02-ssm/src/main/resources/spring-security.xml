@@ -19,8 +19,8 @@
         <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
         <security:form-login login-page="/user/loginPage"
                              login-processing-url="/user/login"
-                             authentication-failure-url="/user/loginPage?error=true"
-                             authentication-success-forward-url="/index"/>
+                             authentication-failure-handler-ref="loginFailureHandler"
+                             authentication-success-handler-ref="loginSuccessHandler"/>
         <!--关闭跨域拦截-->
         <security:csrf disabled="true"/>
     </security:http>
@@ -32,5 +32,7 @@
     </security:authentication-manager>
 
     <bean id="userService" class="com.github.hellxz.security.service.CustomUserDetailService"/>
+    <bean id="loginSuccessHandler" class="com.github.hellxz.security.security.LoginSuccessHandler"/>
+    <bean id="loginFailureHandler" class="com.github.hellxz.security.security.LoginFailureHandler"/>
 
 </beans>
