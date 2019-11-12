@@ -31,6 +31,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.github.hellxz.security.domain"/>
+        <property name="mapperLocations" value="classpath:mapper-xml/*.xml"/>
     </bean>
 
     <!--配置mapper扫描路径-->

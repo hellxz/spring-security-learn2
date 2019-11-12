@@ -7,7 +7,10 @@
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <security:http>
-        <security:form-login/>
+        <security:intercept-url pattern="/index" access="permitAll()"/>
+        <security:intercept-url pattern="/user/loginPage" access="permitAll()"/>
+        <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
+        <security:form-login login-page="/user/loginPage"/>
     </security:http>
 
     <security:authentication-manager>

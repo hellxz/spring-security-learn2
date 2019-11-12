@@ -89,3 +89,11 @@ INSERT INTO sys_role_permission VALUES(2,4);
 --select * from sys_permission;
 --select * from sys_user;
 --select * from sys_role_permission;
+
+select permission.* from sys_user user
+        left join sys_user_role user_role on user.user_id = user_role.user_id
+        left join sys_role_permission role_permission on user_role.role_id = role_permission.role_id
+        left join sys_permission permission on role_permission.perm_id = permission.perm_id
+        where user.username = 'jack'
+
+commit;

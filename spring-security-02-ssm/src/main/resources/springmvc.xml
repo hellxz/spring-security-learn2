@@ -10,7 +10,7 @@
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--扫描SpringMvc注解-->
-    <context:component-scan base-package="com.github.hellxz.security.web.**"/>
+    <context:component-scan base-package="com.github.hellxz.security.**"/>
     <!--开始注解允靶-->
     <mvc:annotation-driven/>
     <!--添加视图解析器-->
