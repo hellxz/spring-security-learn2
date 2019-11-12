@@ -21,6 +21,8 @@
                              login-processing-url="/user/login"
                              authentication-failure-handler-ref="loginFailureHandler"
                              authentication-success-handler-ref="loginSuccessHandler"/>
+        <!--访问拒绝处理很奇怪，像是bug,当我没加处理类时访问无权的接口，会提示403，如果加了就变成405方法不支持了-->
+        <security:access-denied-handler ref="accessDeniedHandler"/>
         <!--关闭跨域拦截-->
         <security:csrf disabled="true"/>
     </security:http>
@@ -28,11 +30,18 @@
 
 
     <security:authentication-manager>
-        <security:authentication-provider user-service-ref="userService"/>
+        <security:authentication-provider user-service-ref="userService">
+            <!-- 引入密码加密 -->
+            <security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
     </security:authentication-manager>
 
     <bean id="userService" class="com.github.hellxz.security.service.CustomUserDetailService"/>
+    <!-- 登录成功与失败的处理 -->
     <bean id="loginSuccessHandler" class="com.github.hellxz.security.security.LoginSuccessHandler"/>
     <bean id="loginFailureHandler" class="com.github.hellxz.security.security.LoginFailureHandler"/>
+    <bean id="accessDeniedHandler" class="com.github.hellxz.security.security.AccessDeniedHandler"/>
+    <!-- 密码加密，相当于 哈希算法+盐 -->
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
 </beans>
