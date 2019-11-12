@@ -10,6 +10,8 @@
         <security:intercept-url pattern="/index" access="permitAll()"/>
         <security:intercept-url pattern="/user/login" access="permitAll()"/>
         <security:intercept-url pattern="/user/loginPage" access="permitAll()"/>
+        <security:intercept-url pattern="/imageCode" access="permitAll()"/>
+        <security:intercept-url pattern="/imageText" access="permitAll()"/>
 
         <security:intercept-url pattern="/product/get" access="hasRole('ROLE_PRODUCT_GET')"/>
         <security:intercept-url pattern="/product/add" access="hasRole('ROLE_PRODUCT_ADD')"/>
