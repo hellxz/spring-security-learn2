@@ -8,12 +8,29 @@
 
     <security:http>
         <security:intercept-url pattern="/index" access="permitAll()"/>
+        <security:intercept-url pattern="/user/login" access="permitAll()"/>
         <security:intercept-url pattern="/user/loginPage" access="permitAll()"/>
+
+        <security:intercept-url pattern="/product/get" access="hasRole('ROLE_PRODUCT_GET')"/>
+        <security:intercept-url pattern="/product/add" access="hasRole('ROLE_PRODUCT_ADD')"/>
+        <security:intercept-url pattern="/product/del" access="hasRole('ROLE_PRODUCT_DEL')"/>
+        <security:intercept-url pattern="/product/mod" access="hasRole('ROLE_PRODUCT_MOD')"/>
+
         <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
-        <security:form-login login-page="/user/loginPage"/>
+        <security:form-login login-page="/user/loginPage"
+                             login-processing-url="/user/login"
+                             authentication-failure-url="/user/loginPage?error=true"
+                             authentication-success-forward-url="/index"/>
+        <!--关闭跨域拦截-->
+        <security:csrf disabled="true"/>
     </security:http>
 
+
+
     <security:authentication-manager>
+        <security:authentication-provider user-service-ref="userService"/>
     </security:authentication-manager>
+
+    <bean id="userService" class="com.github.hellxz.security.service.CustomUserDetailService"/>
 
 </beans>
