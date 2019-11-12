@@ -11,7 +11,7 @@ CREATE TABLE sys_user (
   -- 用户名
   true_name VARCHAR (50),
   -- 真实姓名
-  `password` VARCHAR (50) NOT NULL,
+  `password` VARCHAR (64) NOT NULL,
   -- 密码
   last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   -- 最后登录时间

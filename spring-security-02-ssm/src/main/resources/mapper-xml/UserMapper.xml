@@ -36,4 +36,9 @@
         left join sys_permission permission on role_permission.perm_id = permission.perm_id
         where user.username = #{username}
     </select>
+
+    <select id="updatePassword" parameterType="user">
+        update sys_user set `password` = #{password} where user_id = #{userId}
+    </select>
+
 </mapper>
