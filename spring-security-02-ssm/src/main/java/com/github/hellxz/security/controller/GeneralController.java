@@ -2,6 +2,7 @@ package com.github.hellxz.security.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.hellxz.security.utils.CaptchaUtil;
+import com.github.hellxz.security.utils.SecurityUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ public class GeneralController {
 
     @RequestMapping("/index")
     public String goIndex(){
+        //这里为了展示登录后的信息，用错误信息显示更明显些
+        System.err.println(SecurityUtil.getCurrentUsername());
         return "index";
     }
 
