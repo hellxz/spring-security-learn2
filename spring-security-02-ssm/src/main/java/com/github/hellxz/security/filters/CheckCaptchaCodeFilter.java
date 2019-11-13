@@ -1,9 +1,8 @@
 package com.github.hellxz.security.filters;
 
-import com.github.hellxz.security.CaptchaException;
+import com.github.hellxz.security.exception.CaptchaException;
 import com.github.hellxz.security.security.LoginFailureHandler;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.filter.OncePerRequestFilter;
 

@@ -31,8 +31,13 @@
         <security:access-denied-handler ref="accessDeniedHandler"/>
         <!--关闭跨域拦截-->
         <security:csrf disabled="true"/>
+        <!--
+            开启remember me 功能
+            remember-me 需要将登录成功的token保存到数据库或其他位置，所以需要使用TokenRepository实现
+            这里使用数据库的tokenRepository，保存token到数据库，过期时间单位：秒
+        -->
+        <security:remember-me token-repository-ref="jdbcTokenRepository" token-validity-seconds="3600"/>
     </security:http>
-
 
 
     <security:authentication-manager>
@@ -52,5 +57,14 @@
     <!-- 自定义验证码过滤器 -->
     <bean id="checkCaptchaCodeFilter" class="com.github.hellxz.security.filters.CheckCaptchaCodeFilter">
         <property name="loginFailureHandler" ref="loginFailureHandler"/>
+    </bean>
+
+    <bean id="jdbcTokenRepository" class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
+        <property name="dataSource" ref="dataSource"/>
+        <!--
+            这里启动建表功能只能第一次启动时使用true，之后需要使用false,否则会报表存在错误
+            如果第一次是false，那么也会报错，提示表不存在 ；）
+        -->
+        <property name="createTableOnStartup" value="true"/>
     </bean>
 </beans>

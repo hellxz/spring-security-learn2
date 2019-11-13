@@ -1,4 +1,4 @@
-package com.github.hellxz.security.utils;
+package com.github.hellxz.security.exception;
 
 
 import org.springframework.security.core.AuthenticationException;

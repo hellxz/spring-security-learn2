@@ -14,6 +14,7 @@
 用户名：<input type="text" name="username"/><br/>
 密码：<input type="password" name="password"/><br/>
 验证码：<input type="text" name="captchaCode"/><img src="/captcha" alt="验证码"><br/>
+记住我<input type="checkbox" name="remember-me" value="true"/><br/>
 <input type="button" value="登录" id="loginBtn">
 </form>
 <script>
