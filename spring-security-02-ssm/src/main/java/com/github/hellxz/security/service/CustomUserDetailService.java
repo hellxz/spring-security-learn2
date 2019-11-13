@@ -3,7 +3,10 @@ package com.github.hellxz.security.service;
 import com.github.hellxz.security.domain.Permission;
 import com.github.hellxz.security.domain.User;
 import com.github.hellxz.security.mapper.UserMapper;
+import com.github.hellxz.security.utils.NullUsernameException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +23,9 @@ public class CustomUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        if(StringUtils.isBlank(username)){
+            throw new NullUsernameException("用户名不能为空");
+        }
         //按用户名查出用户
         User user = userMapper.findUserByUsername(username);
         //查出用户权限

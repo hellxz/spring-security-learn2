@@ -9,11 +9,11 @@
 <body>
 <h3>登录页面</h3>
 <div id="tipsDiv" style="display:none;">
-<h5 style="color: red;">用户名或密码输入不正确，请检查后重试</h5>
 </div>
 <form method="post" id="loginForm">
 用户名：<input type="text" name="username"/><br/>
 密码：<input type="password" name="password"/><br/>
+验证码：<input type="text" name="captchaCode"/><img src="/captcha" alt="验证码"><br/>
 <input type="button" value="登录" id="loginBtn">
 </form>
 <script>
@@ -27,6 +27,11 @@
                     }
                     else{
                         //显示提示框
+                        if(data.errorMsg.indexOf("Bad credentials") != -1){
+                            $("#tipsDiv").html("<h5 style='color: red;'>用户名或密码不正确</h5>");
+                        }else{
+                            $("#tipsDiv").html("<h5 style='color: red;'>"+ data.errorMsg +"</h5>");
+                        }
                         $("#tipsDiv").show();
                     }
                 },"json"
