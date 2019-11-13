@@ -10,4 +10,6 @@ Those braches is the lesion of class.
 ![](./pictures/未使用安全框架时流程.jpg)
 ## Spring Security Executing Processes
 ![](./pictures/SpringSecurityProcedure.png)
+## Remember-me process
+![](./pictures/remember-me.png)
 
