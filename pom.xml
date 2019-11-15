@@ -7,7 +7,7 @@
     <modules>
         <module>spring-security-01-ssm</module>
         <module>spring-security-02-ssm</module>
-        <!-- <module>spring-security-03-boot</module>-->
+        <module>spring-security-03-springboot</module>
     </modules>
     <packaging>pom</packaging>
 
