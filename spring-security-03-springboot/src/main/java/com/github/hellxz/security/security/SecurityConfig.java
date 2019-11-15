@@ -32,7 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/product/del").hasAuthority("ROLE_PRODUCT_DEL")
                 .antMatchers("/product/mod").hasAuthority("ROLE_PRODUCT_MOD")
                 .antMatchers("/product/get").hasAuthority("ROLE_PRODUCT_GET")
+                .antMatchers("/login").permitAll()
                 .antMatchers("/**").fullyAuthenticated()
-                .and().formLogin();
+                .and().formLogin().loginPage("/login")
+                .and().csrf().disable();
     }
 }

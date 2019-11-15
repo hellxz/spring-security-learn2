@@ -22,4 +22,9 @@ public class SpringBootSecurityApp {
     public String forbidden(){
         return "403";
     }
+
+    @RequestMapping("/login")
+    public String loginPage(){
+        return "login-page";
+    }
 }
